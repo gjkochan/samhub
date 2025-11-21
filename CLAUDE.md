@@ -2,6 +2,41 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## 🚨 MANDATORY PROTOCOL CHECK (Read Before ANY Action)
+
+**Before creating files, committing, deploying, or making changes, CHECK:**
+
+### File Creation
+- [ ] **Where does this file type belong?**
+  - Documentation (.md)? → `doc/` directory (except CLAUDE.md, README.md)
+  - Temporary/analysis? → `temp/` or `tmp/` or `.claude-temp/`
+  - Source code? → Follow project structure
+  - Tests? → Alongside source or in `tests/`
+
+### Before Committing
+- [ ] **No placeholder code?** (TODO, FIXME, mock, "you would implement")
+- [ ] **Documentation updated** to match code changes?
+- [ ] **Temporary files NOT included?** (Check staging area)
+- [ ] **Commit message follows format?** `type(scope): description`
+- [ ] **Tests written and passing?**
+
+### Before Deployment
+- [ ] **Screenshots taken and user approved?**
+- [ ] **All tests passing?**
+- [ ] **User explicitly said "deploy"?**
+- [ ] **Rollback plan documented?**
+- [ ] **No "pause" or "wait" requests pending?**
+
+### Code Changes
+- [ ] **Read existing code patterns first?**
+- [ ] **Following existing architecture?**
+- [ ] **Refactored duplicates** (not copy-paste)?
+- [ ] **No over-engineering?**
+
+**See `doc/PROTOCOL_INDEX.md` for detailed protocol reference.**
+
+---
+
 ## Project Overview
 
 **SAMHub** is a monorepo containing two Git submodules:
