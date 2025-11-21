@@ -9,7 +9,8 @@ samhub/                    # Parent repository
 ├── sam_api/              # Git submodule (API component)
 ├── sam_ui/               # Git submodule (UI component)
 ├── experiment.sh         # Experiment management script
-└── EXPERIMENTS.md        # This file
+└── doc/
+    └── EXPERIMENTS.md    # This file
 ```
 
 ## Quick Start
