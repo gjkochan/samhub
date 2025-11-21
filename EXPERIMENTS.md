@@ -14,6 +14,22 @@ samhub/                    # Parent repository
 
 ## Quick Start
 
+### Important: Starting Branch
+
+**Experiments branch from the CURRENT branch in each repository.**
+
+When you run `./experiment.sh create <name>`, the new experiment branches will be created from whatever branch is currently checked out in each repo:
+- If sam_api is on `main`, the experiment will branch from `main`
+- If sam_ui is on `main`, the experiment will branch from `main`
+- If you want to branch from a different starting point, checkout that branch in all repos BEFORE creating the experiment
+
+**Recommended**: Always create experiments from `main` for predictability and clean history.
+
+To verify what branch you'll be branching from:
+```bash
+./experiment.sh status
+```
+
 ### 1. Create a New Experiment
 
 ```bash
@@ -21,9 +37,9 @@ samhub/                    # Parent repository
 ```
 
 This will:
-- Create `experiment/my-new-feature` branch in sam_api
-- Create `experiment/my-new-feature` branch in sam_ui
-- Create `experiment/my-new-feature` branch in parent repo
+- Create `experiment/my-new-feature` branch in sam_api (from current branch)
+- Create `experiment/my-new-feature` branch in sam_ui (from current branch)
+- Create `experiment/my-new-feature` branch in parent repo (from current branch)
 - Push all branches to remote
 - Switch all repos to the new experiment branches
 
@@ -306,6 +322,34 @@ Check which experiment you're currently on:
 ```
 
 ## Advanced Usage
+
+### Creating Experiments from a Specific Branch
+
+If you want to create an experiment starting from a branch other than `main`:
+
+```bash
+# 1. First, ensure all repos are on the same starting branch
+cd ~/Documents/code/claude/samhub
+
+# 2. Switch submodules to the desired base branch
+cd sam_api
+git checkout feature-base-branch
+cd ../sam_ui
+git checkout feature-base-branch
+cd ..
+
+# 3. Switch parent repo
+git checkout feature-base-branch
+git submodule update --init --recursive
+
+# 4. Verify all repos are on the correct branch
+./experiment.sh status
+
+# 5. Now create the experiment (will branch from feature-base-branch)
+./experiment.sh create my-experiment
+```
+
+**Example Use Case**: You want to experiment with features that build on top of an existing feature branch that hasn't been merged to main yet.
 
 ### Manual Submodule Management
 If you need to manually manage submodules:
