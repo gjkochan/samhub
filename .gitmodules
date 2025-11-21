@@ -1,0 +1,6 @@
+[submodule "sam_ui"]
+	path = sam_ui
+	url = git@github.com:brainnordic/sam_ui.git
+[submodule "sam_api"]
+	path = sam_api
+	url = git@github.com:brainnordic/sam_api.git
